@@ -16,9 +16,13 @@ const Task = ({ task, index, deleteTask, completedTask }) => {
           <div onClick={(event) => completedTask(task.id)}>
             <AiOutlineCheckCircle title="Done/Undone" />
           </div>
-          <div>
-            <TiPencil title="Edit" />
-          </div>
+
+          {task.status ? null : (
+            <div>
+              <TiPencil title="Edit" />
+            </div>
+          )}
+
           <div onClick={() => deleteTask(task.id)}>
             <GiTrashCan title="Delete" />
           </div>
