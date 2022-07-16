@@ -39,6 +39,10 @@ function App() {
     setToDo(newTask);
   };
 
+  const cancelUpdate = () => {
+    setUpdateData("");
+  };
+
   //change task for update
   const changeTask = (event) => {
     event.preventDefault();
@@ -48,6 +52,14 @@ function App() {
       status: updateData.status ? true : false,
     };
     setUpdateData(newEntry);
+  };
+
+  const updateTask = (event, id) => {
+    event.preventDefault();
+    let filterRecords = [...toDo].filter((task) => task.id !== updateData.id);
+    let updatedObject = [...filterRecords, updateData];
+    setToDo(updatedObject);
+    setUpdateData("");
   };
 
   return (
@@ -60,6 +72,7 @@ function App() {
           addTask={addTask}
           updateData={updateData}
           changeTask={changeTask}
+          updateTask={updateTask}
         />
       </header>
       {toDo && toDo.length ? "" : "No Tasks..."}
