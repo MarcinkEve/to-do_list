@@ -4,7 +4,7 @@ import { AiOutlineCheckCircle } from "react-icons/ai";
 import { TiPencil } from "react-icons/ti";
 import { GiTrashCan } from "react-icons/gi";
 
-const List = ({ task, index }) => {
+const Task = ({ task, index, deleteTask }) => {
   return (
     <li>
       <div className="taskBg">
@@ -13,13 +13,19 @@ const List = ({ task, index }) => {
           <div className="taskText">{task.title}</div>
         </div>
         <div className="iconsWrap">
-          <AiOutlineCheckCircle title="Done/Undone" />
-          <TiPencil title="Edit" />
-          <GiTrashCan title="Delete" />
+          <div>
+            <AiOutlineCheckCircle title="Done/Undone" />
+          </div>
+          <div>
+            <TiPencil title="Edit" />
+          </div>
+          <div onClick={() => deleteTask(task.id)}>
+            <GiTrashCan title="Delete" />
+          </div>
         </div>
       </div>
     </li>
   );
 };
 
-export default List;
+export default Task;
