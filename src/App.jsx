@@ -4,10 +4,7 @@ import Form from "./Components/Form";
 import Task from "./Components/Task";
 
 function App() {
-  const [toDo, setToDo] = useState([
-    { id: 1, title: "Task-1", status: false },
-    { id: 2, title: "Task-2", status: false },
-  ]);
+  const [toDo, setToDo] = useState([]);
 
   const [newTask, setNewTask] = useState(""); //holds temporary data that will be added as new task
   const [updateData, setUpdateData] = useState(""); //holds data that is being edited as new task
