@@ -23,6 +23,11 @@ function App() {
     console.log(newTask);
   };
 
+  const deleteTask = (id) => {
+    let newTasks = toDo.filter((task) => task.id !== id);
+    setToDo(newTasks);
+  };
+
   return (
     <div className="App">
       <header className="App-header">
@@ -33,7 +38,12 @@ function App() {
       <ul>
         {toDo &&
           toDo.map((task, index) => (
-            <Task key={task.id} task={task} index={index}></Task>
+            <Task
+              key={task.id}
+              task={task}
+              index={index}
+              deleteTask={deleteTask}
+            ></Task>
           ))}
       </ul>
     </div>
