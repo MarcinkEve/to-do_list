@@ -10,7 +10,7 @@ function App() {
   ]);
 
   const [newTask, setNewTask] = useState(""); //holds temporary data that will be added as new task
-  const [updatedTask, setUpdatedTask] = useState(""); //holds data that is being edited as new task
+  const [updateData, setUpdateData] = useState(""); //holds data that is being edited as new task
 
   const addTask = (event) => {
     event.preventDefault();
@@ -39,11 +39,28 @@ function App() {
     setToDo(newTask);
   };
 
+  //change task for update
+  const changeTask = (event) => {
+    event.preventDefault();
+    let newEntry = {
+      id: updateData.id,
+      title: event.target.value,
+      status: updateData.status ? true : false,
+    };
+    setUpdateData(newEntry);
+  };
+
   return (
     <div className="App">
       <header className="App-header">
         Here will be To Do List...
-        <Form newTask={newTask} setNewTask={setNewTask} addTask={addTask} />
+        <Form
+          newTask={newTask}
+          setNewTask={setNewTask}
+          addTask={addTask}
+          updateData={updateData}
+          changeTask={changeTask}
+        />
       </header>
       {toDo && toDo.length ? "" : "No Tasks..."}
       <ul>
@@ -55,6 +72,7 @@ function App() {
               index={index}
               deleteTask={deleteTask}
               completedTask={completedTask}
+              setUpdateData={setUpdateData}
             ></Task>
           ))}
       </ul>
