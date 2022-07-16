@@ -1,0 +1,9 @@
+.taskBg {
+  position: relative;
+  text-align: left;
+  color: orange;
+}
+.taskBg .done .taskText {
+  text-decoration: line-through;
+  opacity: 0.3;
+}
