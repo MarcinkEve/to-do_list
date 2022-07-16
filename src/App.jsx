@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./App.css";
-import Form from "./Components/Form/Form";
+import Form from "./Components/Form";
+import Task from "./Components/Task";
 
 function App() {
   const [toDo, setToDo] = useState([
@@ -20,6 +21,12 @@ function App() {
       {
       toDo && toDo.length ? "" : "No Tasks..."
       }
+      <ul>
+        {toDo &&
+          toDo.map((task, index) => (
+            <Task key={task.id} task={task} index={index}></Task>
+          ))}
+      </ul>
     </div>
   );
 }
