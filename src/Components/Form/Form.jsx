@@ -1,8 +1,16 @@
 import React from "react";
 
-const Form = ({ newTask, setNewTask, addTask, updateData, changeTask }) => {
+const Form = ({
+  newTask,
+  setNewTask,
+  addTask,
+  updateData,
+  changeTask,
+  updateTask,
+}) => {
   return (
     <div>
+      {/* Update record */}
       <form>
         <input
           value={updateData && updateData.title}
@@ -12,9 +20,12 @@ const Form = ({ newTask, setNewTask, addTask, updateData, changeTask }) => {
           id="toDo"
           placeholder="enter task"
         />
-        <button type="update">Update</button>
+        <button onClick={updateTask} type="update">
+          Update
+        </button>
         <button type="submit">Cancel</button>
       </form>
+      {/* New record */}
       <form>
         <input
           value={newTask}
