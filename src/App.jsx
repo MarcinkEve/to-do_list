@@ -27,34 +27,46 @@ function App() {
 
   //mark task as completed
   const completedTask = (id) => {
-    let newTask = toDo.map((task) => {
-      if (task.id === id) {
-        return { ...task, status: !task.status };
-      }
-      return task;
-    });
-    setToDo(newTask);
+    // let newTask = toDo.map((task) => {
+    //   if (task.id === id) {
+    //     return { ...task, status: !task.status };
+    //   }
+    //   return task;
+    // });
+    // setToDo(newTask);
+
+    //refactored code
+    setToDo(
+      toDo.map((task) =>
+        task.id === id ? { ...task, status: !task.status } : task
+      )
+    );
   };
 
   const cancelUpdate = () => {
     setUpdateData("");
   };
 
-  //change task for update
-  const changeTask = (event) => {
+  //is is not update, this is object prepared to push as update data in state
+  const changeHolder = (event) => {
     event.preventDefault();
-    let newEntry = {
-      id: updateData.id,
-      title: event.target.value,
-      status: updateData.status ? true : false,
-    };
-    setUpdateData(newEntry);
+    // let newEntry = {
+    //   id: updateData.id,
+    //   title: event.target.value,
+    //   status: updateData.status ? true : false,
+    // };
+    // setUpdateData(newEntry);
+
+    //refactored code
+    setUpdateData({ ...updateData, title: event.target.value });
   };
 
   const updateTask = (event, id) => {
     event.preventDefault();
-    let filterRecords = [...toDo].filter((task) => task.id !== updateData.id);
-    let updatedObject = [...filterRecords, updateData];
+    let removeOldRecords = [...toDo].filter(
+      (task) => task.id !== updateData.id
+    );
+    let updatedObject = [...removeOldRecords, updateData];
     setToDo(updatedObject);
     setUpdateData("");
   };
@@ -69,23 +81,26 @@ function App() {
           addTask={addTask}
           updateData={updateData}
           cancelUpdate={cancelUpdate}
-          changeTask={changeTask}
+          changeHolder={changeHolder}
           updateTask={updateTask}
         />
       </header>
       {toDo && toDo.length ? "" : "No Tasks..."}
       <ul>
         {toDo &&
-          toDo.map((task, index) => (
-            <Task
-              key={index + 1}
-              task={task}
-              index={index}
-              deleteTask={deleteTask}
-              completedTask={completedTask}
-              setUpdateData={setUpdateData}
-            ></Task>
-          ))}
+          toDo
+            .sort((a, b) => (a.id < b.id ? -1 : 1))
+            .sort((a, b) => (a.status > b.status ? -1 : 1))
+            .map((task, index) => (
+              <Task
+                key={index + 1}
+                task={task}
+                index={index}
+                deleteTask={deleteTask}
+                completedTask={completedTask}
+                setUpdateData={setUpdateData}
+              ></Task>
+            ))}
       </ul>
     </div>
   );

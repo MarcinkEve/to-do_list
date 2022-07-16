@@ -19,12 +19,15 @@ const Task = ({ task, index, deleteTask, completedTask, setUpdateData }) => {
 
           {task.status ? null : (
             <div
-              onClick={() =>
-                setUpdateData({
-                  id: task.id,
-                  title: task.title,
-                  status: task.status ? true : false,
-                })
+              onClick={
+                //refactoring
+                () => setUpdateData(task)
+                
+                // setUpdateData({
+                //   id: task.id,
+                //   title: task.title,
+                //   status: task.status ? true : false,
+                // })
               }
             >
               <TiPencil title="Edit" />
