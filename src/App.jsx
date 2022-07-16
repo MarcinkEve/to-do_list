@@ -28,6 +28,17 @@ function App() {
     setToDo(newTasks);
   };
 
+  //mark task as completed
+  const completedTask = (id) => {
+    let newTask = toDo.map((task) => {
+      if (task.id === id) {
+        return { ...task, status: !task.status };
+      }
+      return task;
+    });
+    setToDo(newTask);
+  };
+
   return (
     <div className="App">
       <header className="App-header">
@@ -43,6 +54,7 @@ function App() {
               task={task}
               index={index}
               deleteTask={deleteTask}
+              completedTask={completedTask}
             ></Task>
           ))}
       </ul>
