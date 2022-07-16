@@ -4,7 +4,7 @@ import { AiOutlineCheckCircle } from "react-icons/ai";
 import { TiPencil } from "react-icons/ti";
 import { GiTrashCan } from "react-icons/gi";
 
-const Task = ({ task, index, deleteTask }) => {
+const Task = ({ task, index, deleteTask, completedTask }) => {
   return (
     <li>
       <div className="taskBg">
@@ -13,7 +13,7 @@ const Task = ({ task, index, deleteTask }) => {
           <div className="taskText">{task.title}</div>
         </div>
         <div className="iconsWrap">
-          <div>
+          <div onClick={(event) => completedTask(task.id)}>
             <AiOutlineCheckCircle title="Done/Undone" />
           </div>
           <div>
