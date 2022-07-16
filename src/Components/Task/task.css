@@ -1,4 +1,7 @@
 .taskBg {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   position: relative;
   text-align: left;
   color: orange;
@@ -6,4 +9,8 @@
 .taskBg .done .taskText {
   text-decoration: line-through;
   opacity: 0.3;
+}
+.taskBg div {
+  display: flex;
+  align-items: center;
 }
