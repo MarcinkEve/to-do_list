@@ -6,7 +6,7 @@ const Form = ({
   addTask,
   updateData,
   cancelUpdate,
-  changeTask,
+  changeHolder,
   updateTask,
 }) => {
   return (
@@ -17,7 +17,7 @@ const Form = ({
           <form>
             <input
               value={updateData && updateData.title}
-              onChange={changeTask}
+              onChange={(event) => changeHolder(event)}
               type="text"
               name="toDo"
               id="toDo"
@@ -26,7 +26,9 @@ const Form = ({
             <button onClick={updateTask} type="update">
               Update
             </button>
-            <button onClick={cancelUpdate} type="submit">Cancel</button>
+            <button onClick={cancelUpdate} type="submit">
+              Cancel
+            </button>
           </form>
         </>
       ) : (
