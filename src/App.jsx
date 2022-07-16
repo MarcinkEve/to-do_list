@@ -8,6 +8,9 @@ function App() {
     { id: 1, title: "Task-2", status: false },
   ]);
 
+  const [newTask, setNewTask] = useState(""); //holds temporary data that will be added as new task
+  const [updatedTask, setUpdatedTask] = useState(""); //holds data that is being edited as new task
+
   return (
     <div className="App">
       <header className="App-header">
