@@ -4,7 +4,7 @@ import { AiOutlineCheckCircle } from "react-icons/ai";
 import { TiPencil } from "react-icons/ti";
 import { GiTrashCan } from "react-icons/gi";
 
-const Task = ({ task, index, deleteTask, completedTask }) => {
+const Task = ({ task, index, deleteTask, completedTask, setUpdateData }) => {
   return (
     <li>
       <div className="taskBg">
@@ -18,7 +18,15 @@ const Task = ({ task, index, deleteTask, completedTask }) => {
           </div>
 
           {task.status ? null : (
-            <div>
+            <div
+              onClick={() =>
+                setUpdateData({
+                  id: task.id,
+                  title: task.title,
+                  status: task.status ? true : false,
+                })
+              }
+            >
               <TiPencil title="Edit" />
             </div>
           )}
