@@ -6,17 +6,19 @@ import { GiTrashCan } from "react-icons/gi";
 
 const List = ({ task, index }) => {
   return (
-    <div className="taskBg">
-      <div className={task.status ? "done" : ""}>
-        <span className="taskNumber">{index + 1}</span>
-        <div className="taskText">{task.title}</div>
+    <li>
+      <div className="taskBg">
+        <div className={task.status ? "done" : ""}>
+          <span className="taskNumber">{index + 1}</span>
+          <div className="taskText">{task.title}</div>
+        </div>
+        <div className="iconsWrap">
+          <AiOutlineCheckCircle title="Done/Undone" />
+          <TiPencil title="Edit" />
+          <GiTrashCan title="Delete" />
+        </div>
       </div>
-      <div className="iconsWrap">
-        <AiOutlineCheckCircle title="Done/Undone" />
-        <TiPencil title="Edit" />
-        <GiTrashCan title="Delete" />
-      </div>
-    </div>
+    </li>
   );
 };
 

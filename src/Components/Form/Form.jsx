@@ -1,12 +1,16 @@
 import React from "react";
 
-const Form = () => {
+const Form = ({newTask, setNewTask, addTask}) => {
   return (
     <div>
       <form>
-        <label>Enter task</label>
         <input type="text" name="toDo" id="toDo" placeholder="enter task" />
-        <button type="submit"></button>
+        <button type="update">Update</button>
+        <button type="submit">Cancel</button>
+      </form>
+      <form>
+        <input value={newTask} onChange={(event)=>setNewTask(event.target.value)} type="text" name="toDo" id="toDo" placeholder="enter task" />
+        <button onClick={addTask} type="submit">Submit</button>
       </form>
     </div>
   );
