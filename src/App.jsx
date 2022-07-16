@@ -71,6 +71,7 @@ function App() {
           setNewTask={setNewTask}
           addTask={addTask}
           updateData={updateData}
+          cancelUpdate={cancelUpdate}
           changeTask={changeTask}
           updateTask={updateTask}
         />

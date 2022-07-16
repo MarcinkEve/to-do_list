@@ -5,6 +5,7 @@ const Form = ({
   setNewTask,
   addTask,
   updateData,
+  cancelUpdate,
   changeTask,
   updateTask,
 }) => {
@@ -25,7 +26,7 @@ const Form = ({
             <button onClick={updateTask} type="update">
               Update
             </button>
-            <button type="submit">Cancel</button>
+            <button onClick={cancelUpdate} type="submit">Cancel</button>
           </form>
         </>
       ) : (
