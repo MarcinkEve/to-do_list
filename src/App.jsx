@@ -78,7 +78,7 @@ function App() {
         {toDo &&
           toDo.map((task, index) => (
             <Task
-              key={task.id}
+              key={index + 1}
               task={task}
               index={index}
               deleteTask={deleteTask}
