@@ -2,12 +2,16 @@ import React from "react";
 
 const Form = ({
   newTask,
+  newWhen,
+  setNewWhen,
   setNewTask,
   addTask,
   updateData,
   cancelUpdate,
   changeHolder,
+  changeHolderWhen,
   updateTask,
+  when,
 }) => {
   return (
     <div>
@@ -23,6 +27,14 @@ const Form = ({
               id="toDo"
               placeholder="enter task"
             />
+            <select
+              value={updateData.when}
+              onChange={(event) => changeHolderWhen(event)}
+            >
+              {when.map((el) => (
+                <option>{el}</option>
+              ))}
+            </select>
             <button onClick={updateTask} type="update">
               Update
             </button>
@@ -43,6 +55,14 @@ const Form = ({
               id="toDo"
               placeholder="enter task"
             />
+            <select
+              value={newWhen}
+              onChange={(event) => setNewWhen(event.target.value)}
+            >
+              {when.map((el) => (
+                <option>{el}</option>
+              ))}
+            </select>
             <button onClick={addTask} type="submit">
               Submit
             </button>
