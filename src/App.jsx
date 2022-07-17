@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./App.css";
+import "./App.scss";
 import Form from "./Components/Form";
 import Task from "./Components/Task";
 
@@ -92,72 +92,82 @@ function App() {
 
   const [simpleForm, setSimpleForm] = useState(true);
   ////////
+
   return (
-    <div className="App">
-      <header className="App-header">
-        Here will be To Do List...
-        <div>
+    <div className="App container">
+      <header className="App__header">
+        <h2>To Do List</h2>
+        <div className="App__header-buttons">
           <button onClick={() => setSimpleForm(false)}>General list</button>
           <button onClick={() => setSimpleForm(true)}>Day list</button>
         </div>
-        <Form
-          simpleForm={simpleForm}
-          newTask={newTask}
-          newWhen={newWhen}
-          setNewWhen={setNewWhen}
-          setNewTask={setNewTask}
-          addTask={addTask}
-          updateData={updateData}
-          cancelUpdate={cancelUpdate}
-          changeHolder={changeHolder}
-          changeHolderWhen={changeHolderWhen}
-          updateTask={updateTask}
-          when={when}
-        />
       </header>
-      {toDo.length ? "" : "No Tasks..."}
-      {simpleForm ? (
-        when.map((day) => (
-          <>
-            <div className={toDo.find((el) => el.when === day) ? "" : "dayOff"}>
-              {day}
-            </div>
-            <ol>
+      <main className="App__main">
+        <div className="App__main__listContainer">
+          {toDo.length ? "" : "No Tasks..."}
+          {simpleForm ? (
+            when.map((day) => (
+              <>
+                <h3
+                  className={toDo.find((el) => el.when === day) ? "App__main__listContainer-dayOn" : "App__main__listContainer-dayOff"}
+                >
+                  {day}
+                </h3>
+                <ol className="App__main__listContainer-list">
+                  {toDo
+                    .sort((a, b) => (a.id < b.id ? -1 : 1))
+                    .sort((a, b) => (a.status < b.status ? -1 : 1))
+                    .map((task, index) =>
+                      task.when === day ? (
+                        <Task
+                          key={index + 1}
+                          task={task}
+                          index={index}
+                          deleteTask={deleteTask}
+                          completedTask={completedTask}
+                          setUpdateData={setUpdateData}
+                        ></Task>
+                      ) : null
+                    )}
+                </ol>
+              </>
+            ))
+          ) : (
+            <ol className="App__main__listContainer-list">
               {toDo
                 .sort((a, b) => (a.id < b.id ? -1 : 1))
                 .sort((a, b) => (a.status < b.status ? -1 : 1))
-                .map((task, index) =>
-                  task.when === day ? (
-                    <Task
-                      key={index + 1}
-                      task={task}
-                      index={index}
-                      deleteTask={deleteTask}
-                      completedTask={completedTask}
-                      setUpdateData={setUpdateData}
-                    ></Task>
-                  ) : null
-                )}
+                .map((task, index) => (
+                  <Task
+                    key={index + 1}
+                    task={task}
+                    index={index}
+                    deleteTask={deleteTask}
+                    completedTask={completedTask}
+                    setUpdateData={setUpdateData}
+                  ></Task>
+                ))}
             </ol>
-          </>
-        ))
-      ) : (
-        <ol>
-          {toDo
-            .sort((a, b) => (a.id < b.id ? -1 : 1))
-            .sort((a, b) => (a.status < b.status ? -1 : 1))
-            .map((task, index) => (
-              <Task
-                key={index + 1}
-                task={task}
-                index={index}
-                deleteTask={deleteTask}
-                completedTask={completedTask}
-                setUpdateData={setUpdateData}
-              ></Task>
-            ))}
-        </ol>
-      )}
+          )}
+        </div>
+
+        <div className="App__main__form">
+          <Form
+            simpleForm={simpleForm}
+            newTask={newTask}
+            newWhen={newWhen}
+            setNewWhen={setNewWhen}
+            setNewTask={setNewTask}
+            addTask={addTask}
+            updateData={updateData}
+            cancelUpdate={cancelUpdate}
+            changeHolder={changeHolder}
+            changeHolderWhen={changeHolderWhen}
+            updateTask={updateTask}
+            when={when}
+          />
+        </div>
+      </main>
     </div>
   );
 }

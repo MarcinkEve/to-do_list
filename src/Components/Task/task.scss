@@ -1,0 +1,54 @@
+@import "../../App.scss";
+
+.task {
+  padding: 0.5rem 0 0;
+  &__container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    // position: relative;
+    text-align: left;
+    color: $color-1;
+    font-weight: 500;
+    & .taskDone .task__title {
+      padding-left: 0.5rem;
+      text-decoration: line-through;
+      opacity: 0.3;
+    }
+    & div {
+      display: flex;
+      align-items: center;
+    }
+    &__iconsWrapper {
+      padding: 0 0.3rem;
+    }
+  }
+  &__title {
+    padding: 0 0.5rem;
+  }
+}
+// .taskDone,
+// .taskUnDone {
+//   display: flex;
+//   align-items: center;
+// }
+.taskDone-icon {
+  color: green;
+  font-size: 1.5rem;
+}
+.taskUnDone-icon {
+  color: $color-3;
+  font-size: 1.5rem;
+}
+.edit-icon,
+.delete-icon {
+  font-size: 1.2rem;
+  color: $color-3;
+}
+// .edit-icon {
+//   color: $color-5;
+// }
+// .delete-icon {
+//   color: $color-6;
+// }

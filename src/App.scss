@@ -1,0 +1,89 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+$color-1: #282c34;
+$color-2: white;
+$color-3: rgb(113, 111, 111);
+$color-4: rgb(217, 215, 215);
+$color-5: rgb(45, 154, 2);
+$color-6: rgb(246, 67, 67);
+
+::-webkit-scrollbar {
+  width: 0.4rem;
+}
+::-webkit-scrollbar-track {
+  background: $color-2;
+  padding: 0.5rem;
+}
+::-webkit-scrollbar-thumb {
+  background: $color-3;
+  border-radius: 1rem;
+  margin: 0.5rem 1rem;
+}
+
+#root {
+  height: 100vh;
+}
+body {
+  text-align: center;
+  background-color: $color-1;
+  background-image: url("https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80");
+  background-size: cover;
+}
+.container {
+  width: 50%;
+  transform: translateX(50%);
+}
+.App__header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  height: 4rem;
+  min-height: 3rem;
+  padding-top: 1rem;
+  font-size: calc(10px + 2vmin);
+  color: $color-2;
+  &-buttons button {
+    background-color: $color-2;
+    color: $color-1;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    margin-left: 0.5rem;
+    width: 7rem;
+    border-radius: 2rem;
+  }
+}
+
+.App__main {
+  height: 80vh;
+  margin-top: 2rem;
+  background-color: $color-2;
+  border-radius: 1rem;
+  &__listContainer {
+    word-wrap: break-word;
+    height: 69vh;
+    overflow: auto;
+    padding: 1rem 2rem;
+    // margin: 0.5rem 1rem 0;
+    &-dayOn {
+      text-align: left;
+      font-weight: bold;
+      padding: 1rem 0 0;
+    }
+    &-dayOff {
+      display: none;
+    }
+    &-list {
+      list-style: none;
+    }
+  }
+  &__form {
+    display: flex;
+    box-shadow: #e4e1e4 0px -6px 5px 0px;
+    border-radius: 0 0 2rem 2rem;
+    margin: 0 0.2rem;
+  }
+}

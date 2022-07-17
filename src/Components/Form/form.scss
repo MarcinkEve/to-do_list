@@ -1,0 +1,44 @@
+@import "../../App.scss";
+
+.form__container {
+  width: 100vw;
+  height: 8vh;
+}
+.form__create {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  &-input,
+  &-select {
+    color: $color-3;
+    margin-right: 0.5rem;
+    border-radius: 2rem;
+    border: 1px solid $color-4;
+    height: 1.8rem;
+    font-size: 1rem;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+  &-input {
+    width: 100%;
+    padding: 0rem 0.5rem;
+  }
+  &-select {
+    padding: 0.3rem 0.5rem;
+  }
+  &-select option {
+    border-radius: 2rem;
+    color: $color-3;
+  }
+  &-button {
+    background-color: transparent;
+    border: none;
+    &--icon {
+      font-size: 1.8rem;
+      color: $color-4;
+    }
+  }
+}

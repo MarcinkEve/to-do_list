@@ -1,6 +1,7 @@
 import React from "react";
-import "./task.css";
+import "./task.scss";
 import { AiOutlineCheckCircle } from "react-icons/ai";
+import { MdRadioButtonUnchecked } from "react-icons/md";
 import { TiPencil } from "react-icons/ti";
 import { GiTrashCan } from "react-icons/gi";
 
@@ -13,17 +14,23 @@ const Task = ({
   day,
 }) => {
   return (
-    <li>
-      <div className="taskBg">
-        <div className={task.status ? "done" : ""}>
-          {/* <span className="taskNumber">{index + 1}</span> */}
-          <div className="taskText">{task.title}</div>
-        </div>
-        <div className="iconsWrap">
+    <li className="task">
+      <div className="task__container">
+        <div className={task.status ? "taskDone" : "taskUnDone"}>
           <div onClick={() => completedTask(task.id)}>
-            <AiOutlineCheckCircle title="Done/Undone" />
+            {task.status ? (
+              <AiOutlineCheckCircle title="Done" className="taskDone-icon" />
+            ) : (
+              <MdRadioButtonUnchecked
+                title="Undone"
+                className="taskUnDone-icon"
+              />
+            )}
           </div>
-
+          {/* <span className="taskNumber">{index + 1}</span> */}
+          <div className="task__title">{task.title}</div>
+        </div>
+        <div className="task__container__iconsWrapper">
           {task.status ? null : (
             <div
               onClick={
@@ -37,12 +44,12 @@ const Task = ({
                 // })
               }
             >
-              <TiPencil title="Edit" />
+              <TiPencil title="Edit" className="edit-icon"/>
             </div>
           )}
 
           <div onClick={() => deleteTask(task.id)}>
-            <GiTrashCan title="Delete" />
+            <GiTrashCan title="Delete" className="delete-icon"/>
           </div>
         </div>
       </div>
