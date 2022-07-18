@@ -109,7 +109,11 @@ function App() {
             when.map((day) => (
               <>
                 <h3
-                  className={toDo.find((el) => el.when === day) ? "App__main__listContainer-dayOn" : "App__main__listContainer-dayOff"}
+                  className={
+                    toDo.find((el) => el.when === day)
+                      ? "App__main__listContainer-dayOn"
+                      : "App__main__listContainer-dayOff"
+                  }
                 >
                   {day}
                 </h3>
@@ -150,24 +154,23 @@ function App() {
             </ol>
           )}
         </div>
-
-        <div className="App__main__form">
-          <Form
-            simpleForm={simpleForm}
-            newTask={newTask}
-            newWhen={newWhen}
-            setNewWhen={setNewWhen}
-            setNewTask={setNewTask}
-            addTask={addTask}
-            updateData={updateData}
-            cancelUpdate={cancelUpdate}
-            changeHolder={changeHolder}
-            changeHolderWhen={changeHolderWhen}
-            updateTask={updateTask}
-            when={when}
-          />
-        </div>
       </main>
+      <div className="App__form">
+        <Form
+          simpleForm={simpleForm}
+          newTask={newTask}
+          newWhen={newWhen}
+          setNewWhen={setNewWhen}
+          setNewTask={setNewTask}
+          addTask={addTask}
+          updateData={updateData}
+          cancelUpdate={cancelUpdate}
+          changeHolder={changeHolder}
+          changeHolderWhen={changeHolderWhen}
+          updateTask={updateTask}
+          when={when}
+        />
+      </div>
     </div>
   );
 }

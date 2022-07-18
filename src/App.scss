@@ -11,7 +11,7 @@ $color-5: rgb(45, 154, 2);
 $color-6: rgb(246, 67, 67);
 
 ::-webkit-scrollbar {
-  width: 0.4rem;
+  width: 0.3rem;
 }
 ::-webkit-scrollbar-track {
   background: $color-2;
@@ -21,6 +21,9 @@ $color-6: rgb(246, 67, 67);
   background: $color-3;
   border-radius: 1rem;
   margin: 0.5rem 1rem;
+}
+::-webkit-scrollbar-thumb:hover {
+  color: blue;
 }
 
 #root {
@@ -60,6 +63,7 @@ body {
 .App__main {
   height: 80vh;
   margin-top: 2rem;
+  padding: 0.2rem 0.4rem;
   background-color: $color-2;
   border-radius: 1rem;
   &__listContainer {
@@ -80,10 +84,13 @@ body {
       list-style: none;
     }
   }
-  &__form {
-    display: flex;
-    box-shadow: #e4e1e4 0px -6px 5px 0px;
-    border-radius: 0 0 2rem 2rem;
-    margin: 0 0.2rem;
-  }
+}
+.App__form {
+  position:absolute;
+  bottom: 0;
+  display: flex;
+  width: 100%;
+  height: 7vh;
+  box-shadow: 0px -6px 5px 0px #e4e1e4;
+  border-radius: 0 0 2rem 2rem;
 }

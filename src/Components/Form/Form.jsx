@@ -1,7 +1,6 @@
 import React from "react";
 import { BsArrowUpCircle } from "react-icons/bs";
 import { AiOutlineCheck, AiOutlineClose } from "react-icons/ai";
-import { GrClose } from "react-icons/gr";
 import "./form.scss";
 
 const Form = ({
