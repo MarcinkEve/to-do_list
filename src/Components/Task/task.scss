@@ -53,3 +53,8 @@
 // .delete-icon {
 //   color: $color-6;
 // }
+@media screen and (max-width: 600px) {
+  .task__title {
+    font-size: 15px;
+  }
+}

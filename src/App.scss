@@ -50,13 +50,13 @@ body {
   font-size: calc(10px + 2vmin);
   color: $color-2;
   &-buttons button {
-    background-color: $color-2;
     color: $color-1;
     font-weight: bold;
     padding: 0.5rem 1rem;
     margin-left: 0.5rem;
     width: 7rem;
     border-radius: 2rem;
+    border: 1px solid $color-3;
   }
 }
 
@@ -86,11 +86,48 @@ body {
   }
 }
 .App__form {
-  position:absolute;
+  position: absolute;
   bottom: 0;
   display: flex;
   width: 100%;
   height: 7vh;
   box-shadow: 0px -6px 5px 0px #e4e1e4;
   border-radius: 0 0 2rem 2rem;
+}
+
+/* ========== MEDIA QUERIES (MEDIUM DEVICES) ========== */
+@media screen and (max-width: 1024px) {
+    .container {
+    width: 80%;
+    transform: translateX(13%);
+  }
+  .App__main {
+    margin-top: 0.5rem;
+  }
+}
+
+/* ========== MEDIA QUERIES (SMALL DEVICES) ========== */
+@media screen and (max-width: 600px) {
+  .container {
+    width: 90%;
+    transform: translateX(6%);
+  }
+  .App__header {
+    &-buttons button {
+      color: $color-1;
+      font-weight: bold;
+      padding: 0.5rem;
+      margin-left: 0.2rem;
+      width: 6rem;
+    }
+  }
+  .App__main {
+    margin-top: 1rem;
+    &__listContainer {
+      padding: 0.5rem;
+    }
+  }
+  h3 {
+    font-size: 17px;
+  }
 }
