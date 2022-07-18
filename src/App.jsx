@@ -90,7 +90,7 @@ function App() {
     setUpdateData("");
   };
 
-  const [simpleForm, setSimpleForm] = useState(true);
+  const [generalList, setGeneralList] = useState(true);
   ////////
 
   return (
@@ -98,14 +98,14 @@ function App() {
       <header className="App__header">
         <h2>To Do List</h2>
         <div className="App__header-buttons">
-          <button onClick={() => setSimpleForm(false)}>General list</button>
-          <button onClick={() => setSimpleForm(true)}>Day list</button>
+          <button onClick={() => setGeneralList(false)}>General list</button>
+          <button onClick={() => setGeneralList(true)}>Day list</button>
         </div>
       </header>
       <main className="App__main">
         <div className="App__main__listContainer">
-          {toDo.length ? "" : "No Tasks..."}
-          {simpleForm ? (
+          {toDo.length > 0 ? "" : "No Tasks..."}
+          {generalList ? (
             when.map((day) => (
               <>
                 <h3
@@ -157,7 +157,6 @@ function App() {
       </main>
       <div className="App__form">
         <Form
-          simpleForm={simpleForm}
           newTask={newTask}
           newWhen={newWhen}
           setNewWhen={setNewWhen}
