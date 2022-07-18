@@ -4,7 +4,7 @@
   width: 100vw;
   height: 8vh;
 }
-.form__create {
+.form {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -36,9 +36,22 @@
   &-button {
     background-color: transparent;
     border: none;
-    &--icon {
+    &--icon-submit {
       font-size: 1.8rem;
       color: $color-4;
+    }
+    &--icon-edit,
+    &--icon-cancel {
+      font-size: 1.5rem;
+      border: 1px solid $color-4;
+      border-radius: 50%;
+      padding: 0.2rem;
+    }
+    &--icon-edit {
+      color: $color-5;
+    }
+    &--icon-cancel {
+      color: $color-6;
     }
   }
 }

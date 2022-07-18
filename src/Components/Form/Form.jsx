@@ -1,5 +1,7 @@
 import React from "react";
 import { BsArrowUpCircle } from "react-icons/bs";
+import { AiOutlineCheck, AiOutlineClose } from "react-icons/ai";
+import { GrClose } from "react-icons/gr";
 import "./form.scss";
 
 const Form = ({
@@ -20,7 +22,7 @@ const Form = ({
       {updateData ? (
         <>
           {/* Update record */}
-          <form className="form__edit">
+          <form className="form">
             <input
               value={updateData && updateData.title}
               onChange={(event) => changeHolder(event)}
@@ -28,27 +30,33 @@ const Form = ({
               name="toDo"
               id="toDo"
               placeholder="Add updated task"
+              className="form-input"
             />
             <select
               value={updateData.when}
               onChange={(event) => changeHolderWhen(event)}
+              className="form-select"
             >
               {when.map((el) => (
                 <option>{el}</option>
               ))}
             </select>
-            <button onClick={updateTask} type="update">
-              Update
+            <button onClick={updateTask} type="update" className="form-button">
+              <AiOutlineCheck  className="form-button--icon-edit"/>
             </button>
-            <button onClick={cancelUpdate} type="submit">
-              Cancel
+            <button
+              onClick={cancelUpdate}
+              type="submit"
+              className="form-button"
+            >
+              <AiOutlineClose  className="form-button--icon-cancel"/>
             </button>
           </form>
         </>
       ) : (
         <>
           {/* New record */}
-          <form className="form__create">
+          <form className="form">
             <input
               value={newTask}
               onChange={(event) => setNewTask(event.target.value)}
@@ -56,23 +64,19 @@ const Form = ({
               name="toDo"
               id="toDo"
               placeholder="Add a task"
-              className="form__create-input"
+              className="form-input"
             />
             <select
               value={newWhen}
               onChange={(event) => setNewWhen(event.target.value)}
-              className="form__create-select"
+              className="form-select"
             >
               {when.map((el) => (
                 <option>{el}</option>
               ))}
             </select>
-            <button
-              onClick={addTask}
-              type="submit"
-              className="form__create-button"
-            >
-              <BsArrowUpCircle className="form__create-button--icon" />
+            <button onClick={addTask} type="submit" className="form-button">
+              <BsArrowUpCircle className="form-button--icon-submit" />
             </button>
           </form>
         </>
