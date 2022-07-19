@@ -111,21 +111,24 @@ function App() {
   // ======================== UPDATE ========================
   const updateTask = (event, id) => {
     event.preventDefault();
-  //=======gaunamas sarasa BE editinamo tasko
+    //=======gaunamas sarasa BE editinamo tasko
 
     let removeOldRecords = [...toDo].filter(
       (task) => task.id !== updateData.id
     );
-  //=======sarasas BE editinamo tasko + paeditintas taskas
+    //=======sarasas BE editinamo tasko + paeditintas taskas
 
     let updatedObject = [...removeOldRecords, updateData];
-  //=======setinamas (keiciamas) pagrindinis listas
+    //=======setinamas (keiciamas) pagrindinis listas
 
     setToDo(updatedObject);
     setUpdateData("");
   };
+  const removeAll = () => {
+    localStorage.removeItem("AddedTasks");
+    setToDo([]);
+  };
 
-  
   return (
     <div className="App container">
       <header className="App__header">
@@ -133,6 +136,7 @@ function App() {
         <div className="App__header-buttons">
           <button onClick={() => setGeneralList(false)}>General list</button>
           <button onClick={() => setGeneralList(true)}>Day list</button>
+          <button onClick={removeAll}>Clear list</button>
         </div>
       </header>
       <main className="App__main">
