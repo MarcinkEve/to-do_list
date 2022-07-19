@@ -75,6 +75,18 @@ function App() {
     console.log("statusas", taskStatus);
   };
 
+  // const completedTask = (id) => {
+  //   let done = [...toDo].map((task) => {
+  //     if (task.id === id) {
+  //       ...task,
+  //       task.status = !task.status
+  //     }
+  //     return task;
+  //   });
+  //   setToDo(done);
+  //   console.log("statusas", taskStatus);
+
+  // }
   // ======================== CANCEL ========================
   const cancelUpdate = () => {
     setUpdateData("");
