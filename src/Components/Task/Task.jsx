@@ -7,6 +7,7 @@ import { GiTrashCan } from "react-icons/gi";
 
 const Task = ({
   task,
+  newTask,
   index,
   deleteTask,
   completedTask,
@@ -17,16 +18,18 @@ const Task = ({
     <li className="task">
       <div className="task__container">
         <div className={task.status ? "taskDone" : "taskUnDone"}>
-          <div onClick={() => completedTask(task.id)}>
-            {task.status ? (
+          <input onChange={() => completedTask(task.id)} type="checkbox" checked={task.status} id="done">
+          {/* <div onClick={() => completedTask(task.id)}> */}
+            {/* {task.status ? (
               <AiOutlineCheckCircle title="Done" className="taskDone-icon" />
             ) : (
               <MdRadioButtonUnchecked
                 title="Undone"
                 className="taskUnDone-icon"
               />
-            )}
-          </div>
+            )} */}
+          {/* </div> */}
+          </input>
           {/* <span className="taskNumber">{index + 1}</span> */}
           <div className="task__title">{task.title}</div>
         </div>
@@ -35,6 +38,7 @@ const Task = ({
             <div
               onClick={
                 ////// refactoring
+                // () => setUpdateData(task.id)
                 () => setUpdateData(task)
 
                 // setUpdateData({
