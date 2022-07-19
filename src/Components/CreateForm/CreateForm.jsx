@@ -18,13 +18,11 @@ const CreateForm = ({
   return (
     <>
       {/* New record */}
-      <form className="form">
+      <form className="form" onSubmit={addTask} >
         <input
           value={newTask}
           onChange={(event) => setNewTask(event.target.value)}
           type="text"
-          name="toDo"
-          id="toDo"
           placeholder="Add a task"
           className="form-input"
         />
@@ -37,7 +35,7 @@ const CreateForm = ({
             <option key={i}>{el}</option>
           ))}
         </select>
-        <button onClick={addTask} type="submit" className="form-button">
+        <button type="submit" className="form-button">
           <BsArrowUpCircle className="form-button--icon-submit" />
         </button>
       </form>

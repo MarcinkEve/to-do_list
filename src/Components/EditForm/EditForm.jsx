@@ -17,9 +17,9 @@ const EditForm = ({
   return (
     <>
       {/* Update record */}
-      <form className="form">
+      <form className="form" onSubmit={updateTask} >
         <input
-          value={updateData && updateData.title}
+          value={updateData.title || ""}
           // onChange={(e) => setNewTask(e.target.value)}
           onChange={(event) => changeHolder(event)}
           type="text"
@@ -38,10 +38,10 @@ const EditForm = ({
             <option key={i}>{el}</option>
           ))}
         </select>
-        <button onClick={updateTask} type="update" className="form-button">
+        <button type="submit" className="form-button">
           <AiOutlineCheck className="form-button--icon-edit" />
         </button>
-        <button onClick={cancelUpdate} type="submit" className="form-button">
+        <button onClick={cancelUpdate} type="button" className="form-button">
           <AiOutlineClose className="form-button--icon-cancel" />
         </button>
       </form>
