@@ -18,8 +18,13 @@ const Task = ({
     <li className="task">
       <div className="task__container">
         <div className={task.status ? "taskDone" : "taskUnDone"}>
-          <input onChange={() => completedTask(task.id)} type="checkbox" checked={task.status} id="done">
-          {/* <div onClick={() => completedTask(task.id)}> */}
+          <input
+            onChange={() => completedTask(task.id)}
+            type="checkbox"
+            checked={task.status}
+            id="done"
+          >
+            {/* <div onClick={() => completedTask(task.id)}> */}
             {/* {task.status ? (
               <AiOutlineCheckCircle title="Done" className="taskDone-icon" />
             ) : (
@@ -28,7 +33,7 @@ const Task = ({
                 className="taskUnDone-icon"
               />
             )} */}
-          {/* </div> */}
+            {/* </div> */}
           </input>
           {/* <span className="taskNumber">{index + 1}</span> */}
           <div className="task__title">{task.title}</div>
@@ -48,12 +53,12 @@ const Task = ({
                 // })
               }
             >
-              <TiPencil title="Edit" className="edit-icon"/>
+              <TiPencil title="Edit" className="edit-icon" />
             </div>
           )}
 
           <div onClick={() => deleteTask(task.id)}>
-            <GiTrashCan title="Delete" className="delete-icon"/>
+            <GiTrashCan title="Delete" className="delete-icon" />
           </div>
         </div>
       </div>

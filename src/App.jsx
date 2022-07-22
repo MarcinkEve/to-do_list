@@ -15,7 +15,6 @@ function App() {
   const [updateData, setUpdateData] = useState(""); //holds data that is being edited as new task
 
   const [generalList, setGeneralList] = useState(true);
-
   ////////////////////////////////////////
 
   //puslapiui uzsikrovus useEffect uzkrauna duomenis is LS
@@ -27,6 +26,8 @@ function App() {
       setToDo(getTasksFromLS);
     }
   }, []);
+  
+
   // ======================== ADD ========================
   const addTask = (event) => {
     event.preventDefault();
@@ -38,13 +39,13 @@ function App() {
         status: false,
         when: newWhen,
       };
-      console.log("keiciamas", newTask);
+      // console.log("keiciamas", newTask);
       setToDo([...toDo, newEntry]);
       localStorage.setItem("AddedTasks", JSON.stringify([...toDo, newEntry]));
       setNewTask("");
       setNewWhen("");
+      console.log("newEntry.status", newEntry.status);
     }
-    console.log(newTask, newWhen);
   };
 
   // ======================== DELETE ========================
@@ -54,9 +55,19 @@ function App() {
     setToDo(newTasks);
   };
 
+  // () => completedTask(task.id) checked={task.status}
   // ======================== DONE ========================
+  // useEffect(() => {
+  // if (taskStatus) {
+  // setTaskStatus(!taskStatus);
+  //   console.log("taskStatusAGAIN", !taskStatus);
+  // } else {
+  //   setTaskStatus(taskStatus);
+  // }
+  // }, []);
+
   //mark task as completed
-  const completedTask = (id) => {
+  const completedTask = (id, event) => {
     // let newTask = toDo.map((task) => {
     //   if (task.id === id) {
     //     return { ...task, status: !task.status };
@@ -65,14 +76,33 @@ function App() {
     // });
     // setToDo(newTask);
 
-    ////// refactored code
+    setTaskStatus(!taskStatus);
+    console.log("taskStatusAGAIN", !taskStatus);
+    //// refactored code
     setToDo(
-      toDo.map((task) =>
-        task.id === id ? { ...task, status: !task.status } : task
+      [...toDo].map((task) =>
+        task.id === id ? { ...task, status: !taskStatus } : task
       )
     );
+    console.log("toDoooooooooooo", toDo);
+
+ 
+
+    localStorage.setItem("AddedTasks", JSON.stringify(toDo));
+
+    // setUpdateData({ ...updateData, status: taskStatus });
+
+    // setUpdateData(
+    //   [...toDo].find((task) => (task.id === id ? { ...task, status: true } : { ...task, status: false }))
+    // );
+    // setUpdateData(
+    //   [...toDo].find((task) =>
+    //     task.id === id ? console.log("true", taskStatus) : console.log("falsas")
+    //   )
+    // );
+
     // setTaskStatus(!taskStatus);
-    console.log("statusas", taskStatus);
+    // console.log("statusas", taskStatus);
   };
 
   // const completedTask = (id) => {
@@ -92,7 +122,6 @@ function App() {
     setUpdateData("");
     // setUpdateWhen("");
   };
-
   // ======================== SELECT ONCHANGE ========================
   const changeHolderWhen = (event) => {
     event.preventDefault();
@@ -121,8 +150,32 @@ function App() {
   };
 
   // ======================== UPDATE ========================
+  // const updateTask = (id) => {
+  //   let idNumber = toDo.length + 1;
+  //   let data = JSON.parse(localStorage.getItem("AddedTasks"));
+  //   const myData = data.map((task) => {
+  //     if (task.id === id) {
+  //       return {
+  //         ...task,
+  //         id: idNumber,
+  //         title: newTask,
+  //         status: taskStatus,
+  //         when: newWhen,
+  //       };
+  //     }
+  //     return task;
+  //   });
+
+  //   setToDo(myData);
+  //   setUpdateData("");
+  //   localStorage.setItem("AddedTasks", JSON.stringify(myData));
+  //   window.location.reload();
+  // };
+
   const updateTask = (event, id) => {
     event.preventDefault();
+    // let data = JSON.parse(localStorage.getItem("AddedTasks"));
+
     //=======gaunamas sarasa BE editinamo tasko
 
     let removeOldRecords = [...toDo].filter(
@@ -134,10 +187,16 @@ function App() {
     //=======setinamas (keiciamas) pagrindinis listas
 
     setToDo(updatedObject);
+
+    console.log("settodo", updatedObject);
+    console.log("updateData", updateData);
+
     setUpdateData("");
+    // localStorage.setItem("AddedTasks", JSON.stringify(updatedObject));
   };
+
   const removeAll = () => {
-    localStorage.removeItem("AddedTasks");
+    // localStorage.removeItem("AddedTasks");
     setToDo([]);
   };
 
@@ -146,8 +205,10 @@ function App() {
       <header className="App__header">
         <h2>To Do List</h2>
         <div className="App__header-buttons">
-          <button onClick={() => setGeneralList(false)}>General list</button>
-          <button onClick={() => setGeneralList(true)}>Day list</button>
+          {/* <button onClick={() => setGeneralList(false)}>General list</button> */}
+          <button onClick={(list) => setGeneralList((list) => (list ? 0 : 1))}>
+            List view
+          </button>
           <button onClick={removeAll}>Clear list</button>
         </div>
       </header>
@@ -168,7 +229,7 @@ function App() {
                 </h3>
                 <ol className="App__main__listContainer-list">
                   {toDo
-                    .sort((a, b) => (a.id < b.id ? -1 : 1))
+                    // .sort((a, b) => (a.id < b.id ? -1 : 1))
                     .sort((a, b) => (a.status < b.status ? -1 : 1))
                     .map((task, index) =>
                       task.when === day ? (
@@ -206,6 +267,7 @@ function App() {
       </main>
       <div className="App__form">
         <FormsContainer
+          generalList={generalList}
           newTask={newTask}
           newWhen={newWhen}
           setNewWhen={setNewWhen}
