@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./App.scss";
 import FormsContainer from "./Components/FormsContainer";
 import Task from "./Components/Task";
-
-const when = ["When?", "Today", "Tomorrow", "Upcoming", "Someday"];
+import { when } from "./utils/data";
 
 function App() {
   const [toDo, setToDo] = useState([]);
