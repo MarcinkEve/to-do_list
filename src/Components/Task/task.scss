@@ -1,8 +1,9 @@
 @import "../../App.scss";
 
 .task {
-  padding: 0.5rem 0 0;
+  padding: 1rem 0 0;
   &__container {
+    border: #66bb6a;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -11,8 +12,8 @@
     text-align: left;
     color: $color-1;
     font-weight: 500;
-    & .taskDone .task__title {
-      padding-left: 0.5rem;
+    & .taskDone .task__content {
+      // padding-left: 0.5rem;
       text-decoration: line-through;
       opacity: 0.3;
     }
@@ -24,8 +25,19 @@
       padding: 0 0.3rem;
     }
   }
-  &__title {
-    padding: 0 0.5rem;
+  &__content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    &__title {
+      padding: 0 0.5rem;
+    }
+    &-when {
+      // position: absolute;
+      // right: 6.5rem;
+    }
   }
 }
 // .taskDone,
@@ -47,7 +59,7 @@
     width: 23px;
     border-radius: 50%;
     background-color: #fff;
-    border: 1px solid #ccc;
+    border: 2px solid #ccc;
     cursor: pointer;
   }
   & label:after {
@@ -66,8 +78,9 @@
   & input[type="checkbox"] {
     visibility: hidden;
     &:checked + label {
-      background-color: #66bb6a;
-      border-color: #66bb6a;
+      background-color: rgba(125, 119, 181, 0.9);
+      // opacity: ;
+      border-color: rgb(85, 88, 129);
       &:after {
         opacity: 1;
       }
@@ -84,6 +97,7 @@
     top: -13px;
     left: -8px;
     font-size: 1.8rem;
+    color: #ccc;
     cursor: pointer;
   }
 
@@ -132,7 +146,7 @@
 //   color: $color-6;
 // }
 @media screen and (max-width: 600px) {
-  .task__title {
+  .task__content {
     font-size: 15px;
   }
 }

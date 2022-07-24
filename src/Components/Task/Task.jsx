@@ -17,7 +17,7 @@ const Task = ({
   return (
     <li className="task">
       <div className="task__container">
-        <div>
+        <div className={task.status ? "taskDone" : "taskUnDone"}>
           <div className={"checkbox__container"}>
             <input
               onChange={() => completedTask(task.id)}
@@ -41,9 +41,12 @@ const Task = ({
           </div>
 
           {/* <span className="taskNumber">{index + 1}</span> */}
-          <div className="task__title">{task.title}</div>
+          <div className="task__content">
+            <div className="task__content-title">{task.title}</div>
+          </div>
         </div>
         <div className="task__container__iconsWrapper">
+          <div className="task__content-when">{task.when}</div>
           {task.status ? null : (
             <div
               onClick={
