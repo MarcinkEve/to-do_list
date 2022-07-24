@@ -27,12 +27,12 @@ function App() {
   //     setToDo(getTasksFromLS);
   //   }
   // }, []);
-  
-    useEffect(() => {
-      localStorage.setItem("tasks", JSON.stringify(toDo));
-    }, [toDo]);
 
-    const getFromLS = JSON.parse(localStorage.getItem("tasks"));
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(toDo));
+  }, [toDo]);
+
+  const getFromLS = JSON.parse(localStorage.getItem("tasks"));
   useEffect(() => {
     if (getFromLS) {
       setToDo(getFromLS);
@@ -41,10 +41,22 @@ function App() {
     }
   }, []);
   // ======================== ADD ========================
+  let idNumber = "";
   const addTask = (event) => {
     event.preventDefault();
+
     if (newTask && newWhen) {
-      let idNumber = toDo.length + 1;
+      // let idNumber = toDo.length;
+      if (toDo.length <= 0) {
+        idNumber = 1;
+        console.log("if", idNumber);
+        console.log("toDo.lenght", toDo.length);
+      } else {
+        idNumber = toDo[toDo.length - 1].id + 1;
+        console.log("else", idNumber);
+        console.log("toDo.lenght", toDo.length);
+      }
+
       let newEntry = {
         id: idNumber,
         title: newTask,
@@ -251,7 +263,7 @@ function App() {
                 </h3>
                 <ol className="App__main__listContainer-list">
                   {toDo
-                    // .sort((a, b) => (a.id < b.id ? -1 : 1))
+                    .sort((a, b) => (a.id < b.id ? -1 : 1))
                     .sort((a, b) => (a.status < b.status ? -1 : 1))
                     .map((task, index) =>
                       task.when === day ? (
