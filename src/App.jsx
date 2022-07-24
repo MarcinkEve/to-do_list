@@ -49,26 +49,25 @@ function App() {
       // let idNumber = toDo.length;
       if (toDo.length <= 0) {
         idNumber = 1;
-        console.log("if", idNumber);
-        console.log("toDo.lenght", toDo.length);
+        // console.log("if", idNumber);
       } else {
         idNumber = toDo[toDo.length - 1].id + 1;
-        console.log("else", idNumber);
-        console.log("toDo.lenght", toDo.length);
+        // console.log("else, idNumber", idNumber);
       }
 
       let newEntry = {
         id: idNumber,
         title: newTask,
-        status: false,
         when: newWhen,
+        status: false,
+        important: false,
       };
       // console.log("keiciamas", newTask);
       setToDo([...toDo, newEntry]);
       // localStorage.setItem("AddedTasks", JSON.stringify([...toDo, newEntry]));
       setNewTask("");
       setNewWhen("");
-      console.log("newEntry.status", newEntry.status);
+      // console.log("newEntry.status", newEntry.status);
     }
   };
 
@@ -151,6 +150,24 @@ function App() {
   //   console.log("statusas", taskStatus);
 
   // }
+
+  // ======================== IMPORTANT ========================
+
+  const markImportant = (id, event) => {
+    const marked = [...toDo].map((task) => {
+      if (task.id === id) {
+        // if (taskStatus) {
+        task.important = !task.important;
+        // } else {
+        //   task.status = taskStatus;
+        // }
+      }
+      return task;
+    });
+    setToDo(marked);
+    console.log("marked");
+  };
+
   // ======================== CANCEL ========================
   const cancelUpdate = () => {
     setUpdateData("");
@@ -264,6 +281,7 @@ function App() {
                 <ol className="App__main__listContainer-list">
                   {toDo
                     .sort((a, b) => (a.id < b.id ? -1 : 1))
+                    .sort((a, b) => (a.important > b.important ? -1 : 1))
                     .sort((a, b) => (a.status < b.status ? -1 : 1))
                     .map((task, index) =>
                       task.when === day ? (
@@ -274,6 +292,7 @@ function App() {
                           deleteTask={deleteTask}
                           completedTask={completedTask}
                           setUpdateData={setUpdateData}
+                          markImportant={markImportant}
                         ></Task>
                       ) : null
                     )}
@@ -284,6 +303,7 @@ function App() {
             <ol className="App__main__listContainer-list">
               {toDo
                 .sort((a, b) => (a.id < b.id ? -1 : 1))
+                .sort((a, b) => (a.important > b.important ? -1 : 1))
                 .sort((a, b) => (a.status < b.status ? -1 : 1))
                 .map((task, index) => (
                   <Task
@@ -293,6 +313,7 @@ function App() {
                     deleteTask={deleteTask}
                     completedTask={completedTask}
                     setUpdateData={setUpdateData}
+                    markImportant={markImportant}
                   ></Task>
                 ))}
             </ol>

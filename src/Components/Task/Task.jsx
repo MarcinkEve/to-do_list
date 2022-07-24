@@ -1,7 +1,7 @@
 import React from "react";
 import "./task.scss";
 import { AiOutlineCheckCircle } from "react-icons/ai";
-import { MdRadioButtonUnchecked } from "react-icons/md";
+import { TbUrgent } from "react-icons/tb";
 import { TiPencil } from "react-icons/ti";
 import { GiTrashCan } from "react-icons/gi";
 
@@ -12,32 +12,31 @@ const Task = ({
   deleteTask,
   completedTask,
   setUpdateData,
-  day,
+  markImportant,
 }) => {
   return (
     <li className="task">
       <div className="task__container">
-        <div className={task.status ? "taskDone" : "taskUnDone"}>
-
-          <div className="checkbox__container">
+        <div>
+          <div className={"checkbox__container"}>
             <input
               onChange={() => completedTask(task.id)}
               type="checkbox"
               checked={task.status}
               id={task.id}
-            >
-              {/* <div onClick={() => completedTask(task.id)}> */}
-              {/* </div> */}
-            </input>
-            <label htmlFor={task.id}>
-              {/* {task.status ? (
-                <AiOutlineCheckCircle title="Done" className="taskDone-icon" />
-              ) : (
-                <MdRadioButtonUnchecked
-                  title="Undone"
-                  className="taskUnDone-icon"
-                />
-              )} */}
+            ></input>
+            <label htmlFor={task.id}></label>
+          </div>
+
+          <div className={"checkbox__container-important"}>
+            <input
+              onChange={() => markImportant(task.id)}
+              type="checkbox"
+              checked={task.important}
+              id={"marked" + task.id}
+            ></input>
+            <label htmlFor={"marked" + task.id}>
+              <TbUrgent />
             </label>
           </div>
 
