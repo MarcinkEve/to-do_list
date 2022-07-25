@@ -44,7 +44,23 @@ const Task = ({
         <div className="task__container__iconsWrapper">
           <div className="task__content-when">{task.when}</div>
 
-          {task.status ? null : (
+          <div
+            onClick={
+              ////// refactoring
+              () => setUpdateData(task)
+
+              // setUpdateData({
+              //   id: task.id,
+              //   title: task.title,
+              //   status: task.status ? true : false,
+              // })
+            }
+            className={task.status ? "hideIcon" : ""}
+          >
+            <TiPencil title="Edit" className="edit-icon" />
+          </div>
+
+          {/* {task.status ? null : (
             <div
               onClick={
                 ////// refactoring
@@ -59,7 +75,7 @@ const Task = ({
             >
               <TiPencil title="Edit" className="edit-icon" />
             </div>
-          )}
+          )} */}
 
           <div onClick={() => deleteTask(task.id)}>
             <GiTrashCan title="Delete" className="delete-icon" />

@@ -38,6 +38,10 @@
     &__title {
       padding: 0 0.5rem;
     }
+
+    &-when {
+      padding-right: 0.5rem;
+    }
   }
 }
 
@@ -107,6 +111,9 @@
   }
 }
 
+.hideIcon {
+  visibility: hidden;
+}
 .taskDone-icon {
   color: green;
   font-size: 1.5rem;
@@ -117,7 +124,6 @@
 }
 .edit-icon,
 .delete-icon {
-  padding-left: 0.5rem;
   font-size: 1.2rem;
   color: $color-3;
   cursor: pointer;
