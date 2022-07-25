@@ -1,14 +1,11 @@
 import React from "react";
 import "./task.scss";
-import { AiOutlineCheckCircle } from "react-icons/ai";
 import { TbUrgent } from "react-icons/tb";
 import { TiPencil } from "react-icons/ti";
 import { GiTrashCan } from "react-icons/gi";
 
 const Task = ({
   task,
-  newTask,
-  index,
   deleteTask,
   completedTask,
   setUpdateData,
@@ -40,18 +37,17 @@ const Task = ({
             </label>
           </div>
 
-          {/* <span className="taskNumber">{index + 1}</span> */}
           <div className="task__content">
             <div className="task__content-title">{task.title}</div>
           </div>
         </div>
         <div className="task__container__iconsWrapper">
           <div className="task__content-when">{task.when}</div>
+
           {task.status ? null : (
             <div
               onClick={
                 ////// refactoring
-                // () => setUpdateData(task.id)
                 () => setUpdateData(task)
 
                 // setUpdateData({
