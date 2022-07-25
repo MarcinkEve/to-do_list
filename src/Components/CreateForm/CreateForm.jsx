@@ -18,7 +18,7 @@ const CreateForm = ({
   return (
     <>
       {/* New record */}
-      <form className="form" onSubmit={addTask} >
+      <form className="form" onSubmit={addTask}>
         <input
           value={newTask}
           onChange={(event) => setNewTask(event.target.value)}
