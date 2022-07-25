@@ -2,51 +2,45 @@
 
 .task {
   padding: 1rem 0 0;
+
   &__container {
     border: #66bb6a;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    // position: relative;
     text-align: left;
     color: $color-1;
     font-weight: 500;
+
     & .taskDone .task__content {
-      // padding-left: 0.5rem;
       text-decoration: line-through;
       opacity: 0.3;
     }
+
     & div {
       display: flex;
       align-items: center;
     }
+
     &__iconsWrapper {
-      padding: 0 0.3rem;
+      margin: 0 0 0 0.5rem;
     }
   }
+
   &__content {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
+    padding: 0 0.5rem;
+
     &__title {
       padding: 0 0.5rem;
     }
-    &-when {
-      // position: absolute;
-      // right: 6.5rem;
-    }
   }
 }
-// .taskDone,
-// .taskUnDone {
-//   display: flex;
-//   align-items: center;
-// }
 
-////////////////////////////////////
 .checkbox__container {
   position: relative;
   margin: 0.4rem;
@@ -62,6 +56,7 @@
     border: 2px solid #ccc;
     cursor: pointer;
   }
+
   & label:after {
     content: "";
     position: absolute;
@@ -75,12 +70,14 @@
     transform: rotate(-45deg);
     width: 12px;
   }
+
   & input[type="checkbox"] {
     visibility: hidden;
+
     &:checked + label {
       background-color: rgba(125, 119, 181, 0.9);
-      // opacity: ;
       border-color: rgb(85, 88, 129);
+
       &:after {
         opacity: 1;
       }
@@ -103,26 +100,12 @@
 
   & input[type="checkbox"] {
     visibility: hidden;
+
     &:checked + label {
       color: rgb(226, 10, 10);
     }
   }
 }
-/////////////////////////////////
-// .checkbox__container{
-//   #check {
-//     cursor: pointer;
-//     width: 20px;
-//     height: 20px;
-//     border-radius: 50%;
-//   }
-// &__label{
-//   width: 20px;
-//   height: 20px;
-//   background-color: green;
-// }
-
-// }
 
 .taskDone-icon {
   color: green;
@@ -139,12 +122,7 @@
   color: $color-3;
   cursor: pointer;
 }
-// .edit-icon {
-//   color: $color-5;
-// }
-// .delete-icon {
-//   color: $color-6;
-// }
+
 @media screen and (max-width: 600px) {
   .task__content {
     font-size: 15px;
