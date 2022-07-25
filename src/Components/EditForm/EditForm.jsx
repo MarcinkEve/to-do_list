@@ -2,11 +2,6 @@ import React from "react";
 import { AiOutlineCheck, AiOutlineClose } from "react-icons/ai";
 
 const EditForm = ({
-  newTask,
-  newWhen,
-  setNewWhen,
-  setNewTask,
-  addTask,
   updateData,
   cancelUpdate,
   changeHolder,
@@ -17,10 +12,9 @@ const EditForm = ({
   return (
     <>
       {/* Update record */}
-      <form className="form" onSubmit={updateTask} >
+      <form className="form" onSubmit={updateTask}>
         <input
           value={updateData.title || ""}
-          // onChange={(e) => setNewTask(e.target.value)}
           onChange={(event) => changeHolder(event)}
           type="text"
           name="toDo"
@@ -30,7 +24,6 @@ const EditForm = ({
         />
         <select
           value={updateData.when}
-          // onChange={(e) => setNewWhen(e.target.value)}
           onChange={(event) => changeHolderWhen(event)}
           className="form-select"
         >
