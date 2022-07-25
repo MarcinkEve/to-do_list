@@ -6,7 +6,6 @@ import { when } from "./utils/data";
 
 function App() {
   const [toDo, setToDo] = useState([]);
-  const [taskStatus, setTaskStatus] = useState(false);
 
   const [newTask, setNewTask] = useState(""); //holds temporary data that will be added as new task
   const [newWhen, setNewWhen] = useState("");
@@ -45,13 +44,10 @@ function App() {
     event.preventDefault();
 
     if (newTask && newWhen) {
-      // let idNumber = toDo.length;
       if (toDo.length <= 0) {
         idNumber = 1;
-        // console.log("if", idNumber);
       } else {
         idNumber = toDo[toDo.length - 1].id + 1;
-        // console.log("else, idNumber", idNumber);
       }
 
       let newEntry = {
@@ -61,12 +57,10 @@ function App() {
         status: false,
         important: false,
       };
-      // console.log("keiciamas", newTask);
       setToDo([...toDo, newEntry]);
       // localStorage.setItem("AddedTasks", JSON.stringify([...toDo, newEntry]));
       setNewTask("");
       setNewWhen("");
-      // console.log("newEntry.status", newEntry.status);
     }
   };
 
@@ -77,7 +71,6 @@ function App() {
     setToDo(newTasks);
   };
 
-  // () => completedTask(task.id) checked={task.status}
   // ======================== DONE ========================
   // useEffect(() => {
   // if (taskStatus) {
@@ -110,11 +103,7 @@ function App() {
 
     const checked = [...toDo].map((task) => {
       if (task.id === id) {
-        // if (taskStatus) {
         task.status = !task.status;
-        // } else {
-        //   task.status = taskStatus;
-        // }
       }
       return task;
     });
@@ -134,7 +123,6 @@ function App() {
     // );
 
     // setTaskStatus(!taskStatus);
-    // console.log("statusas", taskStatus);
   };
 
   // const completedTask = (id) => {
@@ -146,8 +134,6 @@ function App() {
   //     return task;
   //   });
   //   setToDo(done);
-  //   console.log("statusas", taskStatus);
-
   // }
 
   // ======================== IMPORTANT ========================
@@ -155,11 +141,7 @@ function App() {
   const markImportant = (id, event) => {
     const marked = [...toDo].map((task) => {
       if (task.id === id) {
-        // if (taskStatus) {
         task.important = !task.important;
-        // } else {
-        //   task.status = taskStatus;
-        // }
       }
       return task;
     });
@@ -170,7 +152,6 @@ function App() {
   // ======================== CANCEL ========================
   const cancelUpdate = () => {
     setUpdateData("");
-    // setUpdateWhen("");
   };
   // ======================== SELECT ONCHANGE ========================
   const changeHolderWhen = (event) => {
@@ -227,15 +208,14 @@ function App() {
     // let data = JSON.parse(localStorage.getItem("AddedTasks"));
 
     //=======gaunamas sarasa BE editinamo tasko
-
     let removeOldRecords = [...toDo].filter(
       (task) => task.id !== updateData.id
     );
+
     //=======sarasas BE editinamo tasko + paeditintas taskas
-
     let updatedObject = [...removeOldRecords, updateData];
-    //=======setinamas (keiciamas) pagrindinis listas
 
+    //=======setinamas (keiciamas) pagrindinis listas
     setToDo(updatedObject);
 
     console.log("settodo", updatedObject);
@@ -255,7 +235,6 @@ function App() {
       <header className="App__header">
         <h2>To Do List</h2>
         <div className="App__header-buttons">
-          {/* <button onClick={() => setGeneralList(false)}>General list</button> */}
           <button onClick={(list) => setGeneralList((list) => (list ? 0 : 1))}>
             List view
           </button>
