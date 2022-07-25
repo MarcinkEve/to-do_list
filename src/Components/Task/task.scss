@@ -111,6 +111,28 @@
   }
 }
 
+.checkbox__container-important--disabled {
+  position: relative;
+  margin: 0 1rem;
+
+  & label {
+    position: absolute;
+    top: -13px;
+    left: -8px;
+    font-size: 1.8rem;
+    color: #ccc;
+    cursor: pointer;
+  }
+
+  & input[type="checkbox"] {
+    visibility: hidden;
+
+    &:checked + label {
+      color: #ccc;
+    }
+  }
+}
+
 .hideIcon {
   visibility: hidden;
 }

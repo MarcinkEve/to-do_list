@@ -15,7 +15,7 @@ const Task = ({
     <li className="task">
       <div className="task__container">
         <div className={task.status ? "taskDone" : "taskUnDone"}>
-          <div className={"checkbox__container"}>
+          <div className="checkbox__container">
             <input
               onChange={() => completedTask(task.id)}
               type="checkbox"
@@ -25,7 +25,13 @@ const Task = ({
             <label htmlFor={task.id}></label>
           </div>
 
-          <div className={"checkbox__container-important"}>
+          <div
+            className={
+              task.status
+                ? "checkbox__container-important--disabled"
+                : "checkbox__container-important"
+            }
+          >
             <input
               onChange={() => markImportant(task.id)}
               type="checkbox"
