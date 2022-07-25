@@ -12,6 +12,7 @@
   background-color: $color-2;
   border-radius: 0 0 1rem 1rem;
   padding: 1rem 0.5rem;
+
   &-input,
   &-select {
     color: $color-3;
@@ -24,27 +25,29 @@
     -moz-appearance: none;
     appearance: none;
   }
+
   &-input {
     width: 100%;
     padding: 0rem 0.5rem;
   }
+
   &-select {
     padding: 0.3rem 0.5rem;
-  }
-  &-select option {
     border-radius: 2rem;
-    color: $color-3;
   }
   &-button {
     background-color: transparent;
     border: none;
+
     &--icon-submit {
       font-size: 1.8rem;
       color: $color-4;
     }
+
     &--icon-submit:hover {
       color: $color-1;
     }
+
     &--icon-edit,
     &--icon-cancel {
       font-size: 1.5rem;
@@ -52,17 +55,19 @@
       border-radius: 50%;
       padding: 0.2rem 0.3rem;
     }
+
     &--icon-edit:hover,
     &--icon-cancel:hover {
       border: 2px solid $color-1;
       font-size: 1.4rem;
       transition: all 100ms;
-
     }
+
     &--icon-edit {
       color: $color-5;
       margin: 0 0.3rem;
     }
+    
     &--icon-cancel {
       color: $color-6;
     }
