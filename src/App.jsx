@@ -47,7 +47,8 @@ function App() {
       if (toDo.length <= 0) {
         idNumber = 1;
       } else {
-        idNumber = toDo[toDo.length - 1].id + 1;
+        idNumber = new Date().getTime();
+        // idNumber = toDo[toDo.length - 1].id + 1;
       }
 
       let newEntry = {
