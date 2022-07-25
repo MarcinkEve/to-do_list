@@ -45,37 +45,11 @@ const Task = ({
           <div className="task__content-when">{task.when}</div>
 
           <div
-            onClick={
-              ////// refactoring
-              () => setUpdateData(task)
-
-              // setUpdateData({
-              //   id: task.id,
-              //   title: task.title,
-              //   status: task.status ? true : false,
-              // })
-            }
+            onClick={() => setUpdateData(task)}
             className={task.status ? "hideIcon" : ""}
           >
             <TiPencil title="Edit" className="edit-icon" />
           </div>
-
-          {/* {task.status ? null : (
-            <div
-              onClick={
-                ////// refactoring
-                () => setUpdateData(task)
-
-                // setUpdateData({
-                //   id: task.id,
-                //   title: task.title,
-                //   status: task.status ? true : false,
-                // })
-              }
-            >
-              <TiPencil title="Edit" className="edit-icon" />
-            </div>
-          )} */}
 
           <div onClick={() => deleteTask(task.id)}>
             <GiTrashCan title="Delete" className="delete-icon" />

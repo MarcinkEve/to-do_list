@@ -6,25 +6,11 @@ import { when } from "./utils/data";
 
 function App() {
   const [toDo, setToDo] = useState([]);
-
-  const [newTask, setNewTask] = useState(""); //holds temporary data that will be added as new task
+  const [newTask, setNewTask] = useState("");
   const [newWhen, setNewWhen] = useState("");
 
-  const [updateData, setUpdateData] = useState(""); //holds data that is being edited as new task
-
+  const [updateData, setUpdateData] = useState("");
   const [generalList, setGeneralList] = useState(true);
-
-  ////////////////////////////////////////
-
-  //puslapiui uzsikrovus useEffect uzkrauna duomenis is LS
-  // const getTasksFromLS = JSON.parse(localStorage.getItem("AddedTasks"));
-  // useEffect(() => {
-  //   if (getTasksFromLS === null) {
-  //     setToDo([]);
-  //   } else {
-  //     setToDo(getTasksFromLS);
-  //   }
-  // }, []);
 
   useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(toDo));
@@ -38,7 +24,7 @@ function App() {
       setToDo([]);
     }
   }, []);
-  // ======================== ADD ========================
+
   let idNumber = "";
   const addTask = (event) => {
     event.preventDefault();
@@ -48,7 +34,6 @@ function App() {
         idNumber = 1;
       } else {
         idNumber = new Date().getTime();
-        // idNumber = toDo[toDo.length - 1].id + 1;
       }
 
       let newEntry = {
@@ -59,49 +44,17 @@ function App() {
         important: false,
       };
       setToDo([...toDo, newEntry]);
-      // localStorage.setItem("AddedTasks", JSON.stringify([...toDo, newEntry]));
       setNewTask("");
       setNewWhen("");
     }
   };
 
-  // ======================== DELETE ========================
   const deleteTask = (id) => {
     let newTasks = toDo.filter((task) => task.id !== id);
-    // localStorage.setItem("AddedTasks", JSON.stringify(newTasks));
     setToDo(newTasks);
   };
 
-  // ======================== DONE ========================
-  // useEffect(() => {
-  // if (taskStatus) {
-  // setTaskStatus(!taskStatus);
-  //   console.log("taskStatusAGAIN", !taskStatus);
-  // } else {
-  //   setTaskStatus(taskStatus);
-  // }
-  // }, []);
-
-  //mark task as completed
-  const completedTask = (id, event) => {
-    // let newTask = toDo.map((task) => {
-    //   if (task.id === id) {
-    //     return { ...task, status: !task.status };
-    //   }
-    //   return task;
-    // });
-    // setToDo(newTask);
-
-    // setTaskStatus(!taskStatus);
-    // console.log("taskStatusAGAIN", !taskStatus);
-    ////// refactored code
-    // setToDo(
-    //   [...toDo].map((task) =>
-    //     task.id === id ? { ...task, status: !taskStatus } : task
-    //   )
-    // );
-    console.log("toDoooooooooooo", toDo);
-
+  const completedTask = (id) => {
     const checked = [...toDo].map((task) => {
       if (task.id === id) {
         task.status = !task.status;
@@ -109,37 +62,9 @@ function App() {
       return task;
     });
     setToDo(checked);
-
-    // localStorage.setItem("AddedTasks", JSON.stringify(checked));
-
-    // setUpdateData({ ...updateData, status: taskStatus });
-
-    // setUpdateData(
-    //   [...toDo].find((task) => (task.id === id ? { ...task, status: true } : { ...task, status: false }))
-    // );
-    // setUpdateData(
-    //   [...toDo].find((task) =>
-    //     task.id === id ? console.log("true", taskStatus) : console.log("falsas")
-    //   )
-    // );
-
-    // setTaskStatus(!taskStatus);
   };
 
-  // const completedTask = (id) => {
-  //   let done = [...toDo].map((task) => {
-  //     if (task.id === id) {
-  //       ...task,
-  //       task.status = !task.status
-  //     }
-  //     return task;
-  //   });
-  //   setToDo(done);
-  // }
-
-  // ======================== IMPORTANT ========================
-
-  const markImportant = (id, event) => {
+  const markImportant = (id) => {
     const marked = [...toDo].map((task) => {
       if (task.id === id) {
         task.important = !task.important;
@@ -147,87 +72,38 @@ function App() {
       return task;
     });
     setToDo(marked);
-    console.log("marked");
   };
 
-  // ======================== CANCEL ========================
   const cancelUpdate = () => {
     setUpdateData("");
   };
-  // ======================== SELECT ONCHANGE ========================
+
   const changeHolderWhen = (event) => {
     event.preventDefault();
     setUpdateData({ ...updateData, when: event.target.value });
   };
 
-  // ======================== INPUT ONCHANGE ========================
-  // this is not update, this is object prepared to push as update data in state
   const changeHolder = (event) => {
     event.preventDefault();
-
-    // let newEntry = {
-    //   id: updateData.id,
-    //   title: event.target.value,
-    //   status: updateData.status ? true : false,
-    //   when: event.target.value,
-    // };
-    // setUpdateData(newEntry);
-    // console.log("updateData", updateData.when);
-
-    ////// refactored code  COMMENTED
     setUpdateData({
       ...updateData,
       title: event.target.value,
     });
   };
 
-  // ======================== UPDATE ========================
-  // const updateTask = (id) => {
-  //   let idNumber = toDo.length + 1;
-  //   let data = JSON.parse(localStorage.getItem("AddedTasks"));
-  //   const myData = data.map((task) => {
-  //     if (task.id === id) {
-  //       return {
-  //         ...task,
-  //         id: idNumber,
-  //         title: newTask,
-  //         status: taskStatus,
-  //         when: newWhen,
-  //       };
-  //     }
-  //     return task;
-  //   });
-
-  //   setToDo(myData);
-  //   setUpdateData("");
-  //   localStorage.setItem("AddedTasks", JSON.stringify(myData));
-  //   window.location.reload();
-  // };
-
-  const updateTask = (event, id) => {
+  const updateTask = (event) => {
     event.preventDefault();
-    // let data = JSON.parse(localStorage.getItem("AddedTasks"));
 
-    //=======gaunamas sarasa BE editinamo tasko
     let removeOldRecords = [...toDo].filter(
       (task) => task.id !== updateData.id
     );
-
-    //=======sarasas BE editinamo tasko + paeditintas taskas
     let updatedObject = [...removeOldRecords, updateData];
 
-    //=======setinamas (keiciamas) pagrindinis listas
     setToDo(updatedObject);
-
-    console.log("settodo", updatedObject);
-    console.log("updateData", updateData);
-
     setUpdateData("");
-    // localStorage.setItem("AddedTasks", JSON.stringify(updatedObject));
   };
 
   const removeAll = () => {
-    // localStorage.removeItem("AddedTasks");
     setToDo([]);
   };
 
