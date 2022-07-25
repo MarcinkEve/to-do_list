@@ -49,6 +49,7 @@ body {
   padding-top: 1rem;
   font-size: calc(10px + 2vmin);
   color: $color-2;
+
   &-buttons button {
     color: $color-1;
     font-weight: bold;
@@ -66,20 +67,23 @@ body {
   padding: 0.2rem 0.4rem;
   background-color: $color-2;
   border-radius: 1rem;
+
   &__listContainer {
     word-wrap: break-word;
     height: 69vh;
     overflow: auto;
     padding: 1rem 2rem;
-    // margin: 0.5rem 1rem 0;
+
     &-dayOn {
       text-align: left;
       font-weight: bold;
       padding: 1rem 0 0;
     }
+
     &-dayOff {
       display: none;
     }
+
     &-list {
       list-style: none;
     }
@@ -123,6 +127,7 @@ body {
   }
   .App__main {
     margin-top: 1rem;
+    
     &__listContainer {
       padding: 0.5rem;
     }
