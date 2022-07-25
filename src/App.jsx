@@ -25,17 +25,11 @@ function App() {
     }
   }, []);
 
-  let idNumber = "";
   const addTask = (event) => {
     event.preventDefault();
 
     if (newTask && newWhen) {
-      if (toDo.length <= 0) {
-        idNumber = 1;
-      } else {
-        idNumber = new Date().getTime();
-      }
-
+      let idNumber = new Date().getTime();
       let newEntry = {
         id: idNumber,
         title: newTask,
@@ -43,6 +37,7 @@ function App() {
         status: false,
         important: false,
       };
+
       setToDo([...toDo, newEntry]);
       setNewTask("");
       setNewWhen("");
