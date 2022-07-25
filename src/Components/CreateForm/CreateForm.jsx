@@ -8,11 +8,6 @@ const CreateForm = ({
   setNewWhen,
   setNewTask,
   addTask,
-  updateData,
-  cancelUpdate,
-  changeHolder,
-  changeHolderWhen,
-  updateTask,
   when,
 }) => {
   return (
