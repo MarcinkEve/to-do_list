@@ -22,7 +22,7 @@ const Task = ({
               checked={task.status}
               id={task.id}
             ></input>
-            <label htmlFor={task.id}></label>
+            <label htmlFor={task.id}><div></div></label>
           </div>
 
           <div
