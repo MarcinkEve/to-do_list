@@ -1,7 +1,7 @@
 @import "../../App.scss";
 
 .task {
-  padding: 0;
+  padding: 0.3rem 0;
 
   &__container {
     display: flex;
@@ -34,16 +34,19 @@
     align-items: center;
     padding: 0 0.5rem;
 
-    &__title {
-      padding: 0 0.5rem;
+    &-title {
+      font-size: 20px;
+      letter-spacing: 1px;
+      line-height: 1.2rem;
     }
 
     &-when {
-      padding: 0.1rem 0.5rem 0.2rem;
+      padding: 0.1rem 0.7rem;
       margin-right: 0.3rem;
-      font-size: 11px;
+      font-size: 15px;
       background-color: $color-9;
       border-radius: 2rem;
+      letter-spacing: 1px;
     }
   }
 }
@@ -106,9 +109,9 @@
 
   & label {
     position: absolute;
-    top: -13px;
+    top: -8px;
     left: -8px;
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     color: $color-9;
     cursor: pointer;
   }
@@ -128,9 +131,9 @@
 
   & label {
     position: absolute;
-    top: -13px;
+    top: -8px;
     left: -8px;
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     color: $color-9;
     cursor: pointer;
   }
@@ -173,5 +176,60 @@
 @media screen and (max-width: 600px) {
   .task__content {
     font-size: 15px;
+    &-title {
+      font-size: 17px;
+    }
+    &-when {
+      font-size: 10px;
+      padding: 0.1rem 0.3rem;
+    }
+  }
+  .checkbox__container-important {
+    margin: 0 0.2rem;
+
+    & label {
+      position: absolute;
+      top: -4px;
+      left: -8px;
+      font-size: 1.2rem;
+      color: $color-9;
+      cursor: pointer;
+    }
+  }
+  .checkbox__container-important--disabled {
+    margin: 0 0.2rem;
+
+    & label {
+      position: absolute;
+      top: -4px;
+      left: -8px;
+      font-size: 1.2rem;
+      color: $color-9;
+      cursor: pointer;
+    }
+  }
+
+  .checkbox__container {
+    width: 30px;
+    height: 30px;
+    & label {
+      top: -0.2rem;
+      left: -0.5rem;
+      & div {
+        height: 15px;
+        width: 15px;
+      }
+    }
+
+    & input {
+      height: 20px;
+      width: 20px;
+      &:checked + label > div {
+        height: 15px;
+        width: 7px;
+        margin-top: 8px;
+        margin-left: 18px;
+      }
+    }
   }
 }
