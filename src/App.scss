@@ -50,13 +50,14 @@ body {
 .App__header {
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: flex-end;
   justify-content: space-between;
   height: 4rem;
   min-height: 3rem;
   padding-top: 1rem;
   font-size: calc(14px + 2vmin);
   letter-spacing: 2px;
+  line-height:calc(14px + 2vmin);
   color: $color-2;
 
   &-buttons button {
@@ -119,7 +120,7 @@ body {
     transform: translateX(13%);
   }
   .App__main {
-    margin-top: 0.5rem;
+    margin-top: 1rem;
   }
 }
 
