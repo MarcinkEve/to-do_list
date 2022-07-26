@@ -115,7 +115,11 @@ function App() {
       </header>
       <main className="App__main">
         <div className="App__main__listContainer">
-          {toDo.length ? "" : "No Tasks..."}
+          {toDo.length ? (
+            ""
+          ) : (
+            <div className="App__main-empty">No Tasks...</div>
+          )}
           {generalList ? (
             when.map((day, index) => (
               <div key={index}>

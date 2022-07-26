@@ -81,6 +81,9 @@ body {
   background-color: $color-2;
   border-radius: 1rem;
 
+  &-empty{
+  font-size: 30px;
+  }
   &__listContainer {
     word-wrap: break-word;
     height: 69vh;
