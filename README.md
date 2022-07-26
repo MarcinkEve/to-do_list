@@ -24,7 +24,7 @@ If you preffer to see all tasks not sorted according when it should be done, jus
 This app has a function to delete complete list of tasks (button "Clear list").
 
 ### Live demo:
-to-do-list-8adrkgn6k-marcinkeve.vercel.app
+https://to-do-list-marcinkeve.vercel.app/
 
 
 ## Run app
