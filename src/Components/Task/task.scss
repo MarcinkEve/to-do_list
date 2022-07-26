@@ -42,7 +42,7 @@
       padding: 0.1rem 0.5rem 0.2rem;
       margin-right: 0.3rem;
       font-size: 11px;
-      background-color: #ccc;
+      background-color: $color-9;
       border-radius: 2rem;
     }
   }
@@ -68,7 +68,7 @@
     & div {
       height: 20px;
       width: 20px;
-      border: solid 2px rgb(85, 88, 129);
+      border: solid 2px $color-8;
       margin: 10px;
       border-radius: 50%;
       transform: rotate(45deg);
@@ -89,7 +89,7 @@
       border-radius: 0;
       border-top: 0;
       border-left: 0;
-      border-color: rgba(125, 119, 181, 0.9);
+      border-color: $color-7;
       height: 20px;
       width: 10px;
       margin-top: 3px;
@@ -102,14 +102,14 @@
 
 .checkbox__container-important {
   position: relative;
-  margin: 0 1rem;
+  margin: 0 0.5rem 0 0.2rem;
 
   & label {
     position: absolute;
     top: -13px;
     left: -8px;
     font-size: 1.8rem;
-    color: #ccc;
+    color: $color-9;
     cursor: pointer;
   }
 
@@ -117,7 +117,7 @@
     visibility: hidden;
 
     &:checked + label {
-      color: rgb(226, 10, 10);
+      color: $color-6;
     }
   }
 }
@@ -131,7 +131,7 @@
     top: -13px;
     left: -8px;
     font-size: 1.8rem;
-    color: #ccc;
+    color: $color-9;
     cursor: pointer;
   }
 
@@ -139,7 +139,7 @@
     visibility: hidden;
 
     &:checked + label {
-      color: #ccc;
+      color: $color-9;
     }
   }
 }
@@ -152,6 +152,13 @@
   font-size: 1.2rem;
   color: $color-3;
   cursor: pointer;
+}
+
+.red {
+  background-color: $color-6a;
+}
+.green {
+  background-color: $color-5a;
 }
 
 /* ========== MEDIA QUERIES (SMALL DEVICES) ========== */

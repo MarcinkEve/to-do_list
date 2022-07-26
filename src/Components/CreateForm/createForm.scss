@@ -12,7 +12,7 @@
   background-color: $color-2;
   border-radius: 0 0 1rem 1rem;
   padding: 1rem 0.5rem;
-
+  
   &-input,
   &-select {
     color: $color-3;
@@ -24,6 +24,7 @@
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
+    cursor: pointer;
   }
 
   &-input {
@@ -38,6 +39,7 @@
   &-button {
     background-color: transparent;
     border: none;
+    cursor: pointer;
 
     &--icon-submit {
       font-size: 1.8rem;

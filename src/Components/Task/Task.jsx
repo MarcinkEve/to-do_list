@@ -22,7 +22,9 @@ const Task = ({
               checked={task.status}
               id={task.id}
             ></input>
-            <label htmlFor={task.id}><div></div></label>
+            <label htmlFor={task.id}>
+              <div></div>
+            </label>
           </div>
 
           <div
@@ -48,7 +50,13 @@ const Task = ({
           </div>
         </div>
         <div className="task__container__iconsWrapper">
-          <div className="task__content-when">{task.when}</div>
+          {task.when === "Today" ? (
+            <div className="task__content-when red">{task.when}</div>
+          ) : task.when === "Tomorrow" ? (
+            <div className="task__content-when green">{task.when}</div>
+          ) : (
+            <div className="task__content-when">{task.when}</div>
+          )}
 
           <div
             onClick={() => setUpdateData(task)}
