@@ -19,7 +19,7 @@ Using this app, you can enter a task and when it should be done ( "Today", "Tomo
 - marked as completed tasks and push them to the bottom of the list
 - marked as important tasks and push them to the top of the list
 
-If you preffer to see all tasks not sorted according when it should be done,\ just click the button "List view" (this button toggles back to previous list view).
+If you preffer to see all tasks not sorted according when it should be done, just click the button "List view" (this button toggles back to previous list view).
 
 This app has a function to delete complete list of tasks (button "Clear list").
 
